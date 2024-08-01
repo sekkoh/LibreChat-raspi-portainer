@@ -27,7 +27,7 @@ services:
 
 # LIBRECHAT env file
   api:
-    env-file:
+    env_file:
       - stack.env
     volumes: !override
       - ./images:/app/client/public/images
