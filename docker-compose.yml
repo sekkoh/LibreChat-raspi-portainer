@@ -22,13 +22,13 @@ services:
       - RAG_API_URL=http://rag_api:${RAG_PORT:-8000}
     volumes:
       - type: bind
-        source: ./.env
+        source: ./stack.env
         target: /app/.env
       - ./images:/app/client/public/images
       - ./logs:/app/api/logs
   mongodb:
     container_name: chat-mongodb
-    image: mongo
+    image: mongo:4.4.18
     restart: always
     user: "${UID}:${GID}"
     volumes:
@@ -65,7 +65,7 @@ services:
     depends_on:
       - vectordb
     env_file:
-      - .env
+      - stack.env
 
 volumes:
   pgdata2:
